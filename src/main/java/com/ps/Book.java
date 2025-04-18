@@ -9,7 +9,7 @@ public class Book {
     private String title;
     //not sure if this should be false
     private Boolean isCheckedOut = false;
-    private String CheckedOutTo = "";
+    private String CheckedOutTo = "no one";
 
     public Book(int id,String isbn,String title, Boolean isCheckedOut)
     {

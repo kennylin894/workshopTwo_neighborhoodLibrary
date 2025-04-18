@@ -1,5 +1,6 @@
 package com.ps;
 
+import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -85,14 +86,25 @@ public class commands {
 
     public static void option2()
     {
-
         System.out.println("These are all the checked out books");
         System.out.println(printCheckOutBooks(notAvailableBooks(inv)));
+        if(option2B().equals("c"))
+        {
+            System.out.println("What book would you like to check in, enter the book id");
+            int id = scanner.nextInt();
+            chooseCheckIn(id);
+        }
+    }
+
+    public static String option2B()
+    {
         System.out.println("Choose an option");
         System.out.println("C) to check in a book");
         System.out.println("X) go back to home screen");
-
+        String input = scanner.nextLine().toLowerCase();
+        return input;
     }
+
 
     public static StringBuilder printCheckOutBooks(ArrayList<Book> notAvailable)
     {
@@ -101,6 +113,7 @@ public class commands {
         {
             System.out.println("Sorry, there are no books that are checked out");
         }
+        System.out.println("These are all the checked out books");
         for(Book book: notAvailable)
         {
             //rn when its being printed the name is empty
@@ -123,6 +136,26 @@ public class commands {
             }
         }
         return notAvailable;
+    }
+
+    public static void chooseCheckIn(int id)
+    {
+        for(Book book: notAvailableBooks(inv))
+        {
+            if(book.getId() == id)
+            {
+                book.checkIn();
+                //testing to see if values update
+                System.out.println(book.getIsCheckedOut());
+                System.out.println(book.getCheckedOutTo());
+
+                //checking if the available books change accordingly
+                //so it updates
+                //Q-2 how would I keep this data permanently
+                System.out.println(printCheckOutBooks(notAvailableBooks(inv)));
+                System.out.println(printAvailableBooks(availableBooks(inv)));
+            }
+        }
     }
 
     public static void option3()
