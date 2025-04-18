@@ -10,8 +10,7 @@ public class Main {
         System.out.println("Welcome to Library HomeScreen");
         System.out.println("1) Show available books");
         System.out.println("2) Show checked out books");
-        System.out.println("3) Check in a book");
-        System.out.println("4) Exit application");
+        System.out.println("3) Exit application");
         int input = scanner.nextInt();
 
 
@@ -27,13 +26,6 @@ public class Main {
             System.out.println("X) go back to home screen");
         }
         else if(input == 3)
-        {
-            System.out.println("Choose an option");
-            System.out.println("C) to check in a book");
-            System.out.println("X) go back to home screen");
-
-        }
-        else if(input == 4)
         {
             System.out.println("Good bye.");
         }
