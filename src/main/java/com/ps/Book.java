@@ -9,7 +9,7 @@ public class Book {
     private String title;
     private Boolean isCheckedOut;
     private String CheckedOutTo;
-    private ArrayList<String> inventory;
+
     public Book(int id,String isbn,String title, Boolean isCheckedOut)
     {
         this.id = id;
@@ -21,14 +21,6 @@ public class Book {
     {
         this.CheckedOutTo = name;
         this.isCheckedOut = true;
-    }
-
-    public ArrayList<String> getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(ArrayList<String> inventory) {
-        this.inventory = inventory;
     }
 
     public void checkIn()

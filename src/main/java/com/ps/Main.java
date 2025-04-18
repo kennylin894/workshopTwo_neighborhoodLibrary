@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args)
     {
-        System.out.println("Welcome to Library HomeScreen");
+        System.out.println("Welcome to Library HomeScreen, Choose your option:");
         System.out.println("1) Show available books");
         System.out.println("2) Show checked out books");
         System.out.println("3) Exit application");
@@ -18,29 +18,11 @@ public class Main {
 
         if(input == 1)
         {
-            System.out.println("These are the available books");
-            ArrayList<Book> total = new ArrayList<>();
-            Book book1 = new Book(1,"1243","Apple",false);
-            Book book2 = new Book(2,"2222","Orange",true);
-            total.add(book1);
-            total.add(book2);
-            for(int i = 0; i < total.size();i++)
-            {
-                if(!total.get(i).getIsCheckedOut())
-                {
-                    StringBuilder book = new StringBuilder();
-                    book.append("ID: ").append(String.valueOf(total.get(i).getId())).append(", ");
-                    book.append("ISBN: ").append(total.get(i).getIsbn()).append(",");
-                    book.append("Title: ").append(total.get(i).getTitle());
-                    System.out.println(book);
-                }
-            }
+            commands.option1();
         }
         else if(input == 2)
         {
-            System.out.println("Choose an option");
-            System.out.println("C) to check in a book");
-            System.out.println("X) go back to home screen");
+           commands.option2();
         }
         else if(input == 3)
         {
