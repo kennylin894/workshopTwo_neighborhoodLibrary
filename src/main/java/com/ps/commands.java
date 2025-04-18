@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class commands {
+    static Scanner scanner = new Scanner(System.in);
     public static void option1()
     {
         Inventory inv = new Inventory();
         System.out.println("These are the available books");
-        System.out.println(availableBooks(inv));
+        System.out.println(printAvailableBooks(availableBooks(inv)));
+        if(option1B() == 1)
+        {
+
+        }
     }
 
-    public static StringBuilder availableBooks(Inventory inventory)
+    public static ArrayList<Book> availableBooks(Inventory inventory)
     {
         StringBuilder string = new StringBuilder();
         ArrayList<Book> available = new ArrayList<>();
@@ -22,6 +27,12 @@ public class commands {
                 available.add(item);
             }
         }
+        return available;
+    }
+
+    public static StringBuilder printAvailableBooks(ArrayList<Book> available)
+    {
+        StringBuilder string = new StringBuilder();
         if(available.isEmpty())
         {
             System.out.println("Sorry, there are no available books");
@@ -35,6 +46,15 @@ public class commands {
         return string;
     }
 
+
+    public static int option1B()
+    {
+        System.out.println("Would you like to:");
+        System.out.println("1) Select a book to check out");
+        System.out.println("2) Exit the application");
+        int input = scanner.nextInt();
+        return input;
+    }
 
     public static void option2()
     {
