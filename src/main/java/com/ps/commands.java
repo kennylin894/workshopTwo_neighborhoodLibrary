@@ -11,8 +11,9 @@ public class commands {
         System.out.println(availableBooks(inv));
     }
 
-    public static ArrayList<Book> availableBooks(Inventory inventory)
+    public static StringBuilder availableBooks(Inventory inventory)
     {
+        StringBuilder string = new StringBuilder();
         ArrayList<Book> available = new ArrayList<>();
         for(Book item: inventory.getAllBooks())
         {
@@ -26,7 +27,12 @@ public class commands {
             System.out.println("Sorry, there are no available books");
         }
         System.out.println("These are all the available books");
-        return available;
+        for(Book book: available)
+        {
+            string.append("ID: ").append(book.getId()).append(" ISBN: ").append(book.getIsbn()).append(" Title: ").append(book.getTitle());
+            string.append("\n");
+        }
+        return string;
     }
 
 
