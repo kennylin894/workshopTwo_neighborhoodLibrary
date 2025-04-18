@@ -92,7 +92,7 @@ public class commands {
         {
             System.out.println("Sorry, there are no available books.");
         }
-        System.out.println("These are all the available books.");
+        System.out.println("======== Available Books ========");
         for(Book book: available)
         {
             string.append("ID: ").append(book.getId()).append(" ISBN: ").append(book.getIsbn()).append(" Title: ").append(book.getTitle());
@@ -174,7 +174,7 @@ public class commands {
         {
             System.out.println("Sorry, there are no books that are checked out.");
         }
-        System.out.println("These are all the checked out books.");
+        System.out.println("======= All Checked Out Books =======");
         for(Book book: notAvailable)
         {
             //rn when its being printed the name is empty
