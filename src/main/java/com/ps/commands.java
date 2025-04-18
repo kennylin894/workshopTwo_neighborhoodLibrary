@@ -70,7 +70,6 @@ public class commands {
             if(book.getId() == id)
             {
                 book.checkOut(name);
-
                 //testing to see if values update
                 System.out.println(book.getIsCheckedOut());
                 System.out.println(book.getCheckedOutTo());
@@ -78,6 +77,7 @@ public class commands {
                 //checking if the available books change accordingly
                 //so it updates
                 //Q-2 how would I keep this data permanently
+                System.out.println(printCheckOutBooks(notAvailableBooks(inv)));
                 System.out.println(printAvailableBooks(availableBooks(inv)));
             }
         }
