@@ -3,18 +3,14 @@ package com.ps;
 import java.util.ArrayList;
 
 public class Inventory {
-    private ArrayList<Book> allBooks;
+    private ArrayList<Book> allBooks = new ArrayList<>();
 
     public Inventory()
     {
-        Book book1 = new Book(1,"1","one",false);
-        Book book2 = new Book(2,"2","two",false);
-        Book book3 = new Book(3,"3","three",false);
-        Book book4 = new Book(4,"4","four",false);
-        allBooks.add(book1);
-        allBooks.add(book2);
-        allBooks.add(book3);
-        allBooks.add(book4);
+        allBooks.add(new Book(1,"1","one",false));
+        allBooks.add(new Book(3,"3","three",false));
+        allBooks.add(new Book(4,"4","four",false));
+        allBooks.add(new Book(4,"4","four",false));
     }
 
     public ArrayList<Book> getAllBooks() {
