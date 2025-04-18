@@ -8,8 +8,8 @@ public class Inventory {
     public Inventory()
     {
         allBooks.add(new Book(1,"1","one",false));
+        allBooks.add(new Book(2,"2","two",false));
         allBooks.add(new Book(3,"3","three",false));
-        allBooks.add(new Book(4,"4","four",false));
         allBooks.add(new Book(4,"4","four",false));
     }
 

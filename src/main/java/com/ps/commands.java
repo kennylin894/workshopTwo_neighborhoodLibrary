@@ -5,13 +5,19 @@ import java.util.Scanner;
 
 public class commands {
     static Scanner scanner = new Scanner(System.in);
+    static Inventory inv = new Inventory();
     public static void option1()
     {
-        Inventory inv = new Inventory();
         System.out.println("These are the available books");
         System.out.println(printAvailableBooks(availableBooks(inv)));
         if(option1B() == 1)
         {
+            System.out.println("Please enter your name:");
+            scanner.nextLine();
+            String name = scanner.nextLine();
+            System.out.println("What book would you like to check out, enter the book id");
+            int id = scanner.nextInt();
+            chooseBook(name,id);
 
         }
     }
@@ -55,6 +61,27 @@ public class commands {
         int input = scanner.nextInt();
         return input;
     }
+
+    public static void chooseBook(String name,int id)
+    {
+        for(Book book: availableBooks(inv))
+        {
+            if(book.getId() == id)
+            {
+                book.checkOut(name);
+
+                //testing to see if values update
+                System.out.println(book.getIsCheckedOut());
+                System.out.println(book.getCheckedOutTo());
+
+                //checking if the available books change accordingly
+                //so it updates
+                //Q-2 how would I keep this data permanently
+                System.out.println(printAvailableBooks(availableBooks(inv)));
+            }
+        }
+    }
+
 
     public static void option2()
     {
