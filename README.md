@@ -1,4 +1,4 @@
-# 📚 Neighborhood Library App
+# 📚 Neighborhood Library Application
 
 Welcome to the **Neighborhood Library App**, a simple Java console-based 
 application that helps manage book check-ins and check-outs.
