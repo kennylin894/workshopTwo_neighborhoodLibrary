@@ -1,5 +1,7 @@
 package com.ps;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -17,7 +19,22 @@ public class Main {
         if(input == 1)
         {
             System.out.println("These are the available books");
-
+            ArrayList<Book> total = new ArrayList<>();
+            Book book1 = new Book(1,"1243","Apple",false);
+            Book book2 = new Book(2,"2222","Orange",true);
+            total.add(book1);
+            total.add(book2);
+            for(int i = 0; i < total.size();i++)
+            {
+                if(!total.get(i).getIsCheckedOut())
+                {
+                    StringBuilder book = new StringBuilder();
+                    book.append("ID: ").append(String.valueOf(total.get(i).getId())).append(", ");
+                    book.append("ISBN: ").append(total.get(i).getIsbn()).append(",");
+                    book.append("Title: ").append(total.get(i).getTitle());
+                    System.out.println(book);
+                }
+            }
         }
         else if(input == 2)
         {

@@ -10,9 +10,12 @@ public class Book {
     private Boolean isCheckedOut;
     private String CheckedOutTo;
     private ArrayList<String> inventory;
-    public Book()
+    public Book(int id,String isbn,String title, Boolean isCheckedOut)
     {
-
+        this.id = id;
+        this.isbn = isbn;
+        this.title = title;
+        this.isCheckedOut = isCheckedOut;
     }
     public void checkOut(String name)
     {
@@ -58,7 +61,7 @@ public class Book {
         this.title = title;
     }
 
-    public Boolean getCheckedOut() {
+    public Boolean getIsCheckedOut() {
         return isCheckedOut;
     }
 
