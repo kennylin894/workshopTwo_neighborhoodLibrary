@@ -7,10 +7,36 @@ public class commands {
     static Scanner scanner = new Scanner(System.in);
     static Inventory inv = new Inventory();
 
+    public static void printGoodbyeMessage() {
+        System.out.println("******************************");
+        System.out.println("*    Thank you for using     *");
+        System.out.println("*      the Library App!      *");
+        System.out.println("*      Goodbye and take      *");
+        System.out.println("*     care! See you soon!    *");
+        System.out.println("******************************");
+    }
+
+    public static void printErrorMessage()
+    {
+        System.out.println("******************************");
+        System.out.println("*           ERROR!           *");
+        System.out.println("*   Something went wrong...  *");
+        System.out.println("*      Please try again.     *");
+        System.out.println("******************************");
+    }
+
+    public static void printSuccess()
+    {
+        System.out.println("*************************************");
+        System.out.println("*   Success! Book Checked In/Out    *");
+        System.out.println("*   Your action was completed       *");
+        System.out.println("*   successfully. Thank you!        *");
+        System.out.println("*************************************");
+    }
+
     //user chooses option 1 - These are the available books
     public static void showAllBooksYouCanCheckOut()
     {
-        System.out.println("These are the available books.");
         System.out.println(printAvailableBooks(availableBooks()));
         //user chooses to check out
         String input = selectABookToCheckOut();
@@ -25,11 +51,11 @@ public class commands {
         //user wants to exit application
         else if(input.equals("x"))
         {
-            System.out.println("Good Bye. Thanks for using our application.");
+            printGoodbyeMessage();
         }
         else
         {
-            System.out.println("Error, bad input. Please try again.");
+            printErrorMessage();
         }
     }
 
@@ -87,8 +113,8 @@ public class commands {
             {
                 found = true;
                 book.checkOut(name);
-                System.out.println("You have successfully checked out the book.");
-                System.out.println("Thank you. Have a great day.");
+                printSuccess();
+                printGoodbyeMessage();
 //                //testing to see if values update
 //                System.out.println(book.getIsCheckedOut());
 //                System.out.println(book.getCheckedOutTo());
@@ -121,11 +147,11 @@ public class commands {
         //user chooses to exit the application
         else if(input.equals("x"))
         {
-            System.out.println("Good Bye. Thanks for using our application.");
+            printGoodbyeMessage();
         }
         else
         {
-            System.out.println("Error, bad input. Please try again.");
+            printErrorMessage();
         }
     }
 
@@ -186,8 +212,8 @@ public class commands {
             {
                 found = true;
                 book.checkIn();
-                System.out.println("You have successfully checked in the book.");
-                System.out.println("Thank you. Have a great day.");
+                printSuccess();
+                printGoodbyeMessage();
                 //testing to see if values update
 //                System.out.println(book.getIsCheckedOut());
 //                System.out.println(book.getCheckedOutTo());

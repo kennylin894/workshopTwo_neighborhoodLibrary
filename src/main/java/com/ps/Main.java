@@ -7,7 +7,10 @@ public class Main {
 
     public static void main(String[] args)
     {
-        System.out.println("Welcome to Library HomeScreen, Choose your option:");
+        System.out.println("******************************************");
+        System.out.println("*          Welcome to the Library!       *");
+        System.out.println("*      Choose an option to continue.     *");
+        System.out.println("******************************************");
         System.out.println("1) Show available books");
         System.out.println("2) Show checked out books");
         System.out.println("0) Exit application");
@@ -19,19 +22,20 @@ public class Main {
             //displays all the books in a list
             commands.showAllBooksYouCanCheckOut();
         }
-            //shows the user what books are checked in
-            //displays all the books in a list
+
         else if(userInput == 2)
         {
+            //shows the user what books are checked in
+            //displays all the books in a list
            commands.showAllCheckedOutBooks();
         }
         else if(userInput == 0)
         {
-            System.out.println("Good Bye. Thanks for using our application.");
+            commands.printGoodbyeMessage();
         }
         else
         {
-            System.out.println("Error, invalid input");
+            commands.printErrorMessage();
         }
     }
 }
