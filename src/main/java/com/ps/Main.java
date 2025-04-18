@@ -19,7 +19,6 @@ public class Main {
         if(input == 1)
         {
             //what books you can check out
-
             commands.option1();
         }
         else if(input == 2)
@@ -27,7 +26,7 @@ public class Main {
             //what books are checked out
             //Q1 - if the book is not checked out, what is the book.isCheckOutTo value?
             //should I use a constructor to have a default value of "" for name of the person
-            //is there to make it so I can assign a name to the book if is only checked out?
+            //is there a way to make it so I can assign a name to the book if is only checked out?
            commands.option2();
         }
         else if(input == 3)

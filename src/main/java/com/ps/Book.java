@@ -7,8 +7,9 @@ public class Book {
     private int id;
     private String isbn;
     private String title;
-    private Boolean isCheckedOut;
-    private String CheckedOutTo;
+    //not sure if this should be false
+    private Boolean isCheckedOut = false;
+    private String CheckedOutTo = "";
 
     public Book(int id,String isbn,String title, Boolean isCheckedOut)
     {

@@ -85,9 +85,44 @@ public class commands {
 
     public static void option2()
     {
+
+        System.out.println("These are all the checked out books");
+        System.out.println(printCheckOutBooks(notAvailableBooks(inv)));
         System.out.println("Choose an option");
         System.out.println("C) to check in a book");
         System.out.println("X) go back to home screen");
+
+    }
+
+    public static StringBuilder printCheckOutBooks(ArrayList<Book> notAvailable)
+    {
+        StringBuilder string = new StringBuilder();
+        if(notAvailable.isEmpty())
+        {
+            System.out.println("Sorry, there are no books that are checked out");
+        }
+        for(Book book: notAvailable)
+        {
+            //rn when its being printed the name is empty
+            //made a temp fix in inventory
+            string.append("ID: ").append(book.getId()).append(" ISBN: ").append(book.getIsbn()).append(" Name: ").append(book.getCheckedOutTo());
+            string.append("\n");
+        }
+        return string;
+    }
+
+    public static ArrayList<Book> notAvailableBooks(Inventory inventory)
+    {
+        StringBuilder string = new StringBuilder();
+        ArrayList<Book> notAvailable = new ArrayList<>();
+        for(Book item: inventory.getAllBooks())
+        {
+            if(item.getIsCheckedOut())
+            {
+                notAvailable.add(item);
+            }
+        }
+        return notAvailable;
     }
 
     public static void option3()
