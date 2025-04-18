@@ -1,6 +1,5 @@
 package com.ps;
 
-import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,20 +8,21 @@ public class commands {
     static Inventory inv = new Inventory();
 
     //user chooses option 1 - These are the available books
-    public static void option1()
+    public static void showAllBooksYouCanCheckOut()
     {
         System.out.println("These are the available books.");
-        System.out.println(printAvailableBooks(availableBooks(inv)));
+        System.out.println(printAvailableBooks(availableBooks()));
         //user chooses to check out
-        String input = option1B();
+        String input = selectABookToCheckOut();
         if(input.equals("c"))
         {
             System.out.println("Please enter your name:");
             String name = scanner.nextLine();
             System.out.println("What book would you like to check out, enter the book id:");
             int id = scanner.nextInt();
-            chooseBook(name,id);
+            chooseBookToCheckOut(name,id);
         }
+        //user wants to exit application
         else if(input.equals("x"))
         {
             System.out.println("Good Bye. Thanks for using our application.");
@@ -33,8 +33,9 @@ public class commands {
         }
     }
 
-    //user chooses to check out the books
-    public static String option1B()
+    //user chooses to check out a book
+    //user just enters the string id of the book they want
+    public static String selectABookToCheckOut()
     {
         System.out.println("Would you like to:");
         System.out.println("C) Select a book to check out.");
@@ -43,12 +44,11 @@ public class commands {
         return input;
     }
 
-    //checks what books are available in the inventory
-    public static ArrayList<Book> availableBooks(Inventory inventory)
+    //retruns an arraylist of books are available in the inventory
+    public static ArrayList<Book> availableBooks()
     {
-        StringBuilder string = new StringBuilder();
         ArrayList<Book> available = new ArrayList<>();
-        for(Book item: inventory.getAllBooks())
+        for(Book item: inv.getAllBooks())
         {
             if(!item.getIsCheckedOut())
             {
@@ -58,7 +58,7 @@ public class commands {
         return available;
     }
 
-    //printer method to print all the books
+    //printer method to print all the books that are available
     public static StringBuilder printAvailableBooks(ArrayList<Book> available)
     {
         StringBuilder string = new StringBuilder();
@@ -75,40 +75,48 @@ public class commands {
         return string;
     }
 
-
-    //used when the user wants to select a book
-    public static void chooseBook(String name,int id)
+    //takes the id of the user input
+    //the id is the book the user wants to check out
+    //takes the id, finds it and then updates its values
+    public static void chooseBookToCheckOut(String name, int id)
     {
-        for(Book book: availableBooks(inv))
+        boolean found = false;
+        for(Book book: availableBooks())
         {
             if(book.getId() == id)
             {
+                found = true;
                 book.checkOut(name);
-                //testing to see if values update
-                System.out.println(book.getIsCheckedOut());
-                System.out.println(book.getCheckedOutTo());
-
-                //checking if the available books change accordingly
-                //so it updates
-                //Q-2 how would I keep this data permanently
-                System.out.println(printCheckOutBooks(notAvailableBooks(inv)));
-                System.out.println(printAvailableBooks(availableBooks(inv)));
+                System.out.println("You have successfully checked out the book.");
+                System.out.println("Thank you. Have a great day.");
+//                //testing to see if values update
+//                System.out.println(book.getIsCheckedOut());
+//                System.out.println(book.getCheckedOutTo());
+//
+//                //checking if the available books change accordingly
+//                //so it updates
+//                //Q-2 how would I keep this data permanently
+//                System.out.println(printCheckOutBooks(notAvailableBooks()));
+//                System.out.println(printAvailableBooks(availableBooks()));
             }
+        }
+        if(!found)
+        {
+            System.out.println("No ID exists. Please try again.");
         }
     }
 
-
     //user chooses to show the books that are checked out
-    public static void option2()
+    public static void showAllCheckedOutBooks()
     {
-        System.out.println(printCheckOutBooks(notAvailableBooks(inv)));
+        System.out.println(printCheckOutBooks(notAvailableBooks()));
         //user wants to check in a book
-        String input = option2B();
+        String input = selectABookToCheckIn();
         if(input.equals("c"))
         {
             System.out.println("What book would you like to check in, enter the book id:");
             int id = scanner.nextInt();
-            chooseCheckIn(id);
+            chooseBookToCheckIn(id);
         }
         //user chooses to exit the application
         else if(input.equals("x"))
@@ -121,17 +129,18 @@ public class commands {
         }
     }
 
-    //lets user choose the
-    public static String option2B()
+    //lets user choose the option to check in a book
+    public static String selectABookToCheckIn()
     {
         System.out.println("Choose an option:");
         System.out.println("C) to check in a book");
-        System.out.println("X) go back to home screen");
+        System.out.println("X) exit the application");
         String input = scanner.nextLine().toLowerCase();
         return input;
     }
 
-
+    //prints all the books that are currently checked out
+    //shows who it is checked out by
     public static StringBuilder printCheckOutBooks(ArrayList<Book> notAvailable)
     {
         StringBuilder string = new StringBuilder();
@@ -150,11 +159,12 @@ public class commands {
         return string;
     }
 
-    public static ArrayList<Book> notAvailableBooks(Inventory inventory)
+    //finds all the books that are checked out by other ppl
+    //otherwords not available
+    public static ArrayList<Book> notAvailableBooks()
     {
-        StringBuilder string = new StringBuilder();
         ArrayList<Book> notAvailable = new ArrayList<>();
-        for(Book item: inventory.getAllBooks())
+        for(Book item: inv.getAllBooks())
         {
             if(item.getIsCheckedOut())
             {
@@ -164,23 +174,33 @@ public class commands {
         return notAvailable;
     }
 
-    public static void chooseCheckIn(int id)
+    //takes the id of the user input
+    //the id is the book the user wants to check in
+    //takes the id, finds it and then updates its values
+    public static void chooseBookToCheckIn(int id)
     {
-        for(Book book: notAvailableBooks(inv))
+        boolean found = false;
+        for(Book book: notAvailableBooks())
         {
             if(book.getId() == id)
             {
+                found = true;
                 book.checkIn();
+                System.out.println("You have successfully checked in the book.");
+                System.out.println("Thank you. Have a great day.");
                 //testing to see if values update
-                System.out.println(book.getIsCheckedOut());
-                System.out.println(book.getCheckedOutTo());
-
-                //checking if the available books change accordingly
-                //so it updates
-                //Q-2 how would I keep this data permanently
-                System.out.println(printCheckOutBooks(notAvailableBooks(inv)));
-                System.out.println(printAvailableBooks(availableBooks(inv)));
+//                System.out.println(book.getIsCheckedOut());
+//                System.out.println(book.getCheckedOutTo());
+//
+//                //checking if the available books change accordingly
+//                //so it updates
+//                System.out.println(printCheckOutBooks(notAvailableBooks()));
+//                System.out.println(printAvailableBooks(availableBooks()));
             }
+        }
+        if(!found)
+        {
+            System.out.println("No ID exists. Please try again.");
         }
     }
 }
