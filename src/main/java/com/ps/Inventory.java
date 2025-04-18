@@ -16,7 +16,6 @@ public class Inventory {
         allBooks.add(new Book(7,"7","seven",true));
         allBooks.add(new Book(8,"8","eight",true));
 
-
         for(Book book: allBooks)
         {
             if(book.getIsCheckedOut())

@@ -11,22 +11,36 @@ public class commands {
     //user chooses option 1 - These are the available books
     public static void option1()
     {
-        System.out.println("These are the available books");
+        System.out.println("These are the available books.");
         System.out.println(printAvailableBooks(availableBooks(inv)));
         //user chooses to check out
-        if(option1B().equals("c"))
+        String input = option1B();
+        if(input.equals("c"))
         {
             System.out.println("Please enter your name:");
-            scanner.nextLine();
             String name = scanner.nextLine();
-            System.out.println("What book would you like to check out, enter the book id");
+            System.out.println("What book would you like to check out, enter the book id:");
             int id = scanner.nextInt();
             chooseBook(name,id);
         }
-        else if(option1B().equals("x"))
+        else if(input.equals("x"))
         {
-
+            System.out.println("Good Bye. Thanks for using our application.");
         }
+        else
+        {
+            System.out.println("Error, bad input. Please try again.");
+        }
+    }
+
+    //user chooses to check out the books
+    public static String option1B()
+    {
+        System.out.println("Would you like to:");
+        System.out.println("C) Select a book to check out.");
+        System.out.println("X) Exit the application.");
+        String input  = scanner.nextLine().toLowerCase();
+        return input;
     }
 
     //checks what books are available in the inventory
@@ -50,9 +64,9 @@ public class commands {
         StringBuilder string = new StringBuilder();
         if(available.isEmpty())
         {
-            System.out.println("Sorry, there are no available books");
+            System.out.println("Sorry, there are no available books.");
         }
-        System.out.println("These are all the available books");
+        System.out.println("These are all the available books.");
         for(Book book: available)
         {
             string.append("ID: ").append(book.getId()).append(" ISBN: ").append(book.getIsbn()).append(" Title: ").append(book.getTitle());
@@ -61,15 +75,6 @@ public class commands {
         return string;
     }
 
-    //user chooses to check out the books
-    public static String option1B()
-    {
-        System.out.println("Would you like to:");
-        System.out.println("C) Select a book to check out");
-        System.out.println("X) Exit the application");
-        String input  = scanner.nextLine().toLowerCase();
-        return input;
-    }
 
     //used when the user wants to select a book
     public static void chooseBook(String name,int id)
@@ -96,30 +101,30 @@ public class commands {
     //user chooses to show the books that are checked out
     public static void option2()
     {
-        System.out.println("These are all the checked out books");
         System.out.println(printCheckOutBooks(notAvailableBooks(inv)));
         //user wants to check in a book
-        if(option2B().equals("c"))
+        String input = option2B();
+        if(input.equals("c"))
         {
-            System.out.println("What book would you like to check in, enter the book id");
+            System.out.println("What book would you like to check in, enter the book id:");
             int id = scanner.nextInt();
             chooseCheckIn(id);
         }
         //user chooses to exit the application
-        else if(option2B().equals("x"))
+        else if(input.equals("x"))
         {
-            System.out.println("Good Bye.");
+            System.out.println("Good Bye. Thanks for using our application.");
         }
         else
         {
-            System.out.println("Error, bad input. Please try again");
+            System.out.println("Error, bad input. Please try again.");
         }
     }
 
     //lets user choose the
     public static String option2B()
     {
-        System.out.println("Choose an option");
+        System.out.println("Choose an option:");
         System.out.println("C) to check in a book");
         System.out.println("X) go back to home screen");
         String input = scanner.nextLine().toLowerCase();
@@ -132,9 +137,9 @@ public class commands {
         StringBuilder string = new StringBuilder();
         if(notAvailable.isEmpty())
         {
-            System.out.println("Sorry, there are no books that are checked out");
+            System.out.println("Sorry, there are no books that are checked out.");
         }
-        System.out.println("These are all the checked out books");
+        System.out.println("These are all the checked out books.");
         for(Book book: notAvailable)
         {
             //rn when its being printed the name is empty
@@ -177,10 +182,5 @@ public class commands {
                 System.out.println(printAvailableBooks(availableBooks(inv)));
             }
         }
-    }
-
-    public static void option3()
-    {
-
     }
 }

@@ -31,7 +31,7 @@ public class Main {
         }
         else if(input == 3)
         {
-            System.out.println("Good bye.");
+            System.out.println("Good Bye. Thanks for using our application.");
         }
         else
         {
