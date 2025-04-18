@@ -2,7 +2,8 @@
 
 Welcome to the **Neighborhood Library App**, a simple Java console-based 
 application that helps manage book check-ins and check-outs.
-By: Kenny Lin
+
+By: **Kenny Lin**
 
 ---
 
