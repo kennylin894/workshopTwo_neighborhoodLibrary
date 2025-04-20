@@ -4,7 +4,6 @@ public class Book {
     private int id;
     private String isbn;
     private String title;
-    //not sure if this should be false
     private Boolean isCheckedOut = false;
     private String CheckedOutTo = "";
 

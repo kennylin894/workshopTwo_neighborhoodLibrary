@@ -8,6 +8,7 @@ public class Inventory {
 
     public Inventory()
     {
+        //ai gen books,
         allBooks.add(new Book(1003, "ISBN-2371", "The Lost World", false));
         allBooks.add(new Book(1027, "ISBN-8742", "Ocean Deep", false));
         allBooks.add(new Book(1098, "ISBN-5566", "Skyward Bound", false));
@@ -39,6 +40,7 @@ public class Inventory {
         allBooks.add(new Book(3280, "ISBN-7575", "Hollow Crown", true));
         allBooks.add(new Book(3399, "ISBN-3232", "Burning Truths", false));
 
+        //ai gen random names for the books
         ArrayList<String> randomNames = new ArrayList<>(Arrays.asList(
                 "Alice", "Bob", "Charlie", "Diana", "Ethan",
                 "Fiona", "George", "Hannah", "Isaac", "Julia",
@@ -51,7 +53,7 @@ public class Inventory {
             if(book.getIsCheckedOut())
             {
                 //we just gonna reuse names for now
-                //if the index uses all 20 names, its gonna reuse from the start again
+                //if the index uses all 20 names, its gonna reuse the names again
                 if(index >= randomNames.size())
                 {
                     index = 0;

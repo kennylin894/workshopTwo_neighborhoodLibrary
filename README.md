@@ -22,11 +22,11 @@ By: **Kenny Lin**
 
 ![img.png](img.png)
 
-- `1`: View all available books and check one out
+- `1`: View all available books and check one out using the ID
 
 ![img_1.png](img_1.png)
 
-- `2`: View all checked out books and return one
+- `2`: View all checked out books and lets the user return a book
 
 ![img_2.png](img_2.png)
 

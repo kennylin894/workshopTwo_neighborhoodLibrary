@@ -29,8 +29,8 @@ public class commands {
     {
         System.out.println("*************************************");
         System.out.println("*   Success! Book Checked In/Out    *");
-        System.out.println("*   Your action was completed       *");
-        System.out.println("*   successfully. Thank you!        *");
+        System.out.println("*    Your action was completed      *");
+        System.out.println("*     successfully. Thank you!      *");
         System.out.println("*************************************");
     }
 
@@ -115,15 +115,6 @@ public class commands {
                 book.checkOut(name);
                 printSuccess();
                 printGoodbyeMessage();
-//                //testing to see if values update
-//                System.out.println(book.getIsCheckedOut());
-//                System.out.println(book.getCheckedOutTo());
-//
-//                //checking if the available books change accordingly
-//                //so it updates
-//                //Q-2 how would I keep this data permanently
-//                System.out.println(printCheckOutBooks(notAvailableBooks()));
-//                System.out.println(printAvailableBooks(availableBooks()));
             }
         }
         if(!found)
@@ -177,8 +168,6 @@ public class commands {
         System.out.println("======= All Checked Out Books =======");
         for(Book book: notAvailable)
         {
-            //rn when its being printed the name is empty
-            //made a temp fix in inventory
             string.append("ID: ").append(book.getId()).append(" ISBN: ").append(book.getIsbn()).append(" Name: ").append(book.getCheckedOutTo());
             string.append("\n");
         }
@@ -214,14 +203,6 @@ public class commands {
                 book.checkIn();
                 printSuccess();
                 printGoodbyeMessage();
-                //testing to see if values update
-//                System.out.println(book.getIsCheckedOut());
-//                System.out.println(book.getCheckedOutTo());
-//
-//                //checking if the available books change accordingly
-//                //so it updates
-//                System.out.println(printCheckOutBooks(notAvailableBooks()));
-//                System.out.println(printAvailableBooks(availableBooks()));
             }
         }
         if(!found)
